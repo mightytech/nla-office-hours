@@ -23,7 +23,7 @@ change, you edit the prose. The LLM reads it and does what it says.
 If that sounds unusual, two paths for the curious:
 
 - **Read about it:**
-  [The Documentation Is the Application](https://github.com/mightytech/nla-framework)
+  [The Documentation Is the Application](content/the-documentation-is-the-application.md)
   — a probe report exploring what software becomes when language is the runtime
 - **Talk to one:** That's what this is.
 
@@ -103,6 +103,7 @@ nla-office-hours/
 │   └── sessions/                 # Session logs
 ├── config.md                     # User preferences (gitignored)
 ├── CLAUDE.md                     # Runtime identity
+├── CONTRIBUTING.md               # How to contribute
 └── .claude/skills/               # Skill wrappers
 ```
 
@@ -126,12 +127,6 @@ is wide open — write natural language preferences to change any aspect of
 behavior. Your `config.md` is gitignored (it belongs to you, not the
 application).
 
-### Adding Content
-
-Drop articles and whitepapers into `content/`. The NLA scans this directory
-at startup and builds an index of what's available. Any Markdown file works —
-the NLA reads them on demand when answering questions.
-
 ---
 
 ## Improving It
@@ -153,13 +148,11 @@ contributions — it's different from most open source.
 ## Upgrading
 
 ```bash
-cd ../nla-framework && git pull
+git pull
 ```
 
-Thin wrapper skills delegate to the framework, so updated logic takes effect
-immediately. For structural changes (new skills, changed expectations), run
-`/update` in this directory — it compares current intent against what was
-installed and proposes changes.
+For framework and package updates, run `/update` — it pulls remote changes,
+compares current intent against what was installed, and proposes changes.
 
 ---
 
@@ -174,6 +167,6 @@ you're trying to do — the AI has read the documentation and can orient you.
 
 - [NLA Framework](https://github.com/mightytech/nla-framework) — the
   foundation that NLAs (including this one) are built on
-- [The Documentation Is the Application](https://github.com/mightytech/nla-framework)
+- [The Documentation Is the Application](content/the-documentation-is-the-application.md)
   — a probe report exploring the NLA paradigm
 - [CONTRIBUTING.md](CONTRIBUTING.md) — how to contribute to this project
