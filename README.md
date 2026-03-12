@@ -39,11 +39,10 @@ If that sounds unusual, two paths for the curious:
 
 ### Quick Start
 
-1. Add your articles to `content/` (essays, whitepapers, explorations)
-2. Start Claude Code in this directory
-3. Run `/startup` — loads the article index, checks available sources, and
+1. Start Claude Code in this directory
+2. Run `/startup` — loads the article index, checks available sources, and
    enters office hours mode
-4. Ask a question — the NLA answers grounded in your articles and the
+3. Ask a question — the NLA answers grounded in the articles and the
    framework source
 
 ---
@@ -64,6 +63,11 @@ curious. Run `/close` when you're done.
   regular code?"
 - **Building** — "How do I build one?" (The NLA points you to the framework's
   `/create-app`.)
+- **Process** — "How was the /debrief skill designed?" "What do the
+  framework's session logs reveal about how the LLM uses stated values
+  during design work?" These aren't syslogs — they're design journals.
+  The framework's friction logs, feedback logs, and session logs trace
+  the *why* behind every significant change.
 
 **Where answers come from:** The published articles provide the author's
 framing — the arguments, the analogies, the conceptual architecture. The
@@ -89,7 +93,7 @@ nla-office-hours/
 │       ├── values.md             # Commitments and priorities
 │       ├── voice.md              # Tone and personality
 │       └── common-patterns.md    # Recurring question patterns
-├── content/                      # Articles and whitepapers (you manage)
+├── content/                      # Published articles and whitepapers
 ├── reference/                    # Maintenance records
 │   ├── design-rationale.md       # Why the system is built this way
 │   ├── friction-log.md           # Internal observations
