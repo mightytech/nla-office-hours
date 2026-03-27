@@ -124,24 +124,10 @@ An organization that's ready for this — that genuinely wants to hear from its 
 
 ---
 
-## Beyond a Single Organization
-
-The same architecture applies wherever multiple people need to share feedback, have it routed to whoever can act, and receive reasoned responses.
-
-**Customer-to-company feedback.** A customer describes a problem. The AI routes it to the right team — not "customer service" as a catch-all, but the specific team that owns the specific product, process, or policy the customer is frustrated with.
-
-**Community governance.** Residents of a neighborhood describe issues. The AI routes to the relevant city department. Each department triages with reasoning. The resident sees the response. The city council sees which departments are responsive and which aren't.
-
-In each case, the pattern is the same: plain language feedback, AI-judged routing, triage with reasoning, closed-loop follow-up, system-level learning. The organizational nervous system isn't limited to organizations. It's a pattern for any group of people who need to solve problems together.
-
----
-
-## Getting There
-
-Each layer is independently valuable. Each generates the evidence and the organizational readiness for the next. No organization needs to commit to the full vision to benefit from the first step — start with adaptive surveys, add the rant box, build toward closed-loop triage. But the full vision is where the real transformation lives.
-
 The core patterns — AI-judged routing, triage with transparent reasoning, closed-loop tracking, the self-improving learning cycle — have been prototyped and tested in a software development context, where they work reliably. The application to organizational feedback is new, but the mechanisms are proven. The hard part isn't the technology. It's the culture.
 
 ---
 
 *An organization that can sense what's wrong, route the signal to whoever can fix it, respond with reasoning, and learn from the whole cycle isn't just listening better. It's thinking better.*
+
+*This is one of several explorations of [Natural Language Application](the-documentation-is-the-application.md) patterns applied to specific domains.*

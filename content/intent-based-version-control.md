@@ -80,3 +80,5 @@ That's also why the "merge" is fundamentally different. Two NLAs receiving the s
 What I actually built was a change management pipeline where the unit of change is intent rather than text. Git is still underneath — it tracks which files changed, provides rollback branches, handles the mechanical versioning. But the layer that captures *meaning* — what changed behaviorally, who proposed it, why it was accepted, what alternatives were considered — that layer operates in prose, mediated by AI judgment.
 
 Whether that's "version control" or something else, I'm not sure the label matters. The trail from the Duet letter through triage, implementation, and session log is traceable in documents anyone can read. That's more than most commit histories offer. It's also more fragile, in ways I've only started to understand.
+
+*This is one of several explorations of [Natural Language Application](the-documentation-is-the-application.md) patterns applied to specific domains.*

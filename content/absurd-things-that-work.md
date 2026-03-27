@@ -132,6 +132,25 @@ The application can even tell you which parts of itself are working well — smo
 
 ---
 
+## 11. Run your code outside your application
+
+**In traditional code:**
+A function from a Rails app can't execute in a browser. A Python module can't run in a Java runtime. Code is bound to its language, its dependencies, its runtime, its environment. Portability requires containers, cross-compilation, or rewriting.
+
+**In an NLA:**
+A skill written for Claude Code — designed to layer on top of an NLA session with the full framework installed — was fetched from a GitHub repo and run in a Claude.ai chat conversation. Different interface, different session model, no framework, no installed packages, no persistence layer. It worked. The AI read the prose instructions, identified bundled threads in the conversation, proposed them as a set, and worked through them one at a time — exactly as designed.
+
+**The traditional equivalent:**
+```
+Copy a function from your Rails codebase.
+Paste it into a Python REPL.
+It works.
+```
+
+The "code" is prose. Any AI that can read prose can run it. You lose the application's infrastructure — persistence, learning loops, session continuity — but the judgment layer is independently portable. The app is the gym with equipment and a trainer. The skill in a bare chat window is doing the exercise in your living room. Less optimal, still effective.
+
+---
+
 ## The Pattern Under the Patterns
 
 Each of these is absurd by the standards of traditional software. None of them required special engineering. They're all consequences of the same thing: the runtime understands language, and the source code is language. When both sides of the equation are language, the things that were hard become easy, the things that were impossible become trivial, and the things that were unimaginable become obvious.
@@ -141,3 +160,5 @@ The question isn't whether these patterns are clever tricks. It's whether they'r
 ---
 
 *The best sign that something new is happening isn't when it's impressive. It's when it's obvious — and you can't figure out why nobody did it before.*
+
+*This is one of several explorations of [Natural Language Application](the-documentation-is-the-application.md) patterns applied to specific domains.*

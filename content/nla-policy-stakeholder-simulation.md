@@ -131,3 +131,5 @@ The people most affected by policy have the least access to policy analysis. Tha
 - **Trust and adoption.** Local officials are practical people. They'll try a tool if it helps them do their job better. They won't try it if it sounds like academic theory or Silicon Valley hype. The presentation matters: "here's a way to prepare for the next board meeting" works; "AI-powered stakeholder simulation platform" doesn't.
 
 - **The scope question.** This focuses on local governance, but the same pattern applies anywhere consequential decisions are made by people without analytical staff: nonprofit boards, neighborhood associations, community health organizations.
+
+*This is one of several explorations of [Natural Language Application](the-documentation-is-the-application.md) patterns applied to specific domains.*

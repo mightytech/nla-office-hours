@@ -99,3 +99,5 @@ But there's a sharper version of the argument. Most developed countries pre-fill
 An NLA routes around the obstacle entirely. You don't need legislation. You don't need Intuit's permission. You build the thing that dissolves the complexity gap with judgment. And the pattern applies anywhere incumbents profit from that kind of gap: insurance claims, benefits applications, legal filings, immigration paperwork. "Give me what you have, I'll figure out what it means" is an equity proposition as much as a technology one.
 
 The simple tax return is just the clearest example because everyone has filed taxes, everyone has felt the pain of translating their life into little boxes, and everyone understands why the math needs to be right. The NLA doesn't make taxes easier by simplifying the tax code. It makes taxes easier by meeting people where they are.
+
+*This is one of several explorations of [Natural Language Application](the-documentation-is-the-application.md) patterns applied to specific domains.*

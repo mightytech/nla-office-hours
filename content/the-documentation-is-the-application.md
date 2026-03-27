@@ -92,7 +92,7 @@ All software embeds values — priorities, assumptions, whose edge cases get han
 
 An NLA with no explicit values has the same problem — it inherits the model's training defaults, unexamined. There is no neutral default.
 
-In an NLA, values can be [a document](https://github.com/mightytech/nla-writer/blob/main/app/shared/values.md) the runtime reads and follows. When the file says "the human decides," the AI applies that as a judgment criterion. When it says "truth over persuasion," every interaction is shaped by it. Change the values document, change the behavior.
+In an NLA, values can be [a document](nla-writer-values.md) the runtime reads and follows. When the file says "the human decides," the AI applies that as a judgment criterion. When it says "truth over persuasion," every interaction is shaped by it. Change the values document, change the behavior.
 
 This isn't a mission statement nobody reads. It's operative. When the framework's [maintain skill](https://github.com/mightytech/nla-framework/blob/main/core/skills/maintain.md) evaluates a proposed change, it checks the proposal against the values document and surfaces tensions: "this would prioritize X over Y — your values doc says Y comes first." Not a veto — a flag. The human decides. But the check happens because the values are in a document the AI reads at startup, not buried in training data.
 
@@ -116,7 +116,7 @@ The same pattern appears in how NLAs extend each other. Installing a traditional
 
 A2A and MCP solve real problems, but they solve them for programmatic coordination. For the judgment-rich and asynchronous kind, language models don't need that infrastructure. They need prose they can read and enough context to evaluate it.
 
-The communication system behind that exchange isn't ad hoc. The receiving AI doesn't just read the letter and react. It evaluates each item against its own project's loaded context, applying [evidence thresholds](https://github.com/mightytech/nla-penny-post/blob/main/check-feedback.md): a single observation is a data point, two from different contexts is a signal, three is strong. Then it proposes a verdict — accept, adapt, defer, decline — with reasoning for each. The human approves or adjusts.
+The communication system behind that exchange isn't ad hoc. The receiving AI doesn't just read the letter and react. It evaluates each item against its own project's loaded context, applying [evidence thresholds](https://github.com/mightytech/nla-penny-post/blob/main/check-feedback.md): a single observation is a data point, two from different contexts is a signal, three is strong. Then it proposes a verdict — accept, adapt, defer, decline — with reasoning for each. The human approves or adjusts. Traced end to end, the pipeline [resembles version control](intent-based-version-control.md) — but with intent as the unit of change rather than text.
 
 The "protocol" isn't just mutual comprehension. It's mutual comprehension with built-in epistemology.
 
@@ -128,13 +128,13 @@ This isn't "just prompt engineering." A prompt is stateless, one-shot, and monol
 
 The findings are real — the applications work, the patterns hold across domains. But I've been exploring for weeks, not years. The interpretation is mine to offer and yours to evaluate.
 
-Each finding individually has adjacent work. Language as executable specification has neighbors in prompt programming and Software 3.0 discourse. Feedback loops exist in every mature engineering practice. Values-driven AI is a growing research field. What appears to be new is the claim that these form a coherent system where each piece depends on the others. A skill file without a learning loop is a prompt. A learning loop without values is a self-modifying system with no guardrails. Values without accountability-based authority are a style guide. The pieces need each other. The system is the contribution.
+Each finding individually has [adjacent work](adjacent-approaches-to-nla.md). Language as executable specification has neighbors in prompt programming and Software 3.0 discourse. Feedback loops exist in every mature engineering practice. Values-driven AI is a growing research field. What appears to be new is the claim that these form a coherent system where each piece depends on the others. A skill file without a learning loop is a prompt. A learning loop without values is a self-modifying system with no guardrails. Values without accountability-based authority are a style guide. The pieces need each other. The system is the contribution.
 
 **We might be in the CGI-bin era of AI.** The analogy is specific. CGI-bin developers weren't inventing the web. They were building dynamic applications on a platform designed for static documents. Every script was a workaround — spawn a process per request, no session state, manually parse everything. The results were ugly and fragile. But they worked, and the fact that they worked proved the web was a platform, not just a document viewer. Nobody runs CGI scripts anymore. But everything on the web exists because someone proved, with crude workarounds, that it was possible.
 
 My framework manually shims capabilities the platform should provide natively. Context persistence, session continuity, document synthesis, identity recovery after context compaction — each is a solved problem in traditional application platforms. None are solved in the AI platform, because the platform doesn't know it's a platform yet. It thinks it's a coding assistant.
 
-The crudeness is the point. If sophisticated tooling were required, that would suggest the paradigm depends on engineering. It works with nothing but markdown files and the AI's ability to follow instructions — on a platform that wasn't designed for this. I explicitly hope that infrastructure becomes unnecessary — that's what success looks like. The platform solves those problems natively and every NLA gets better overnight. But the patterns survive regardless: values as readable source code, accountability-based authority, typed feedback loops, prose as protocol. The platform can absorb the plumbing. It won't absorb the ideas.
+The crudeness is the point. If sophisticated tooling were required, that would suggest the paradigm depends on engineering. It works with nothing but markdown files and the AI's ability to follow instructions — on a platform that wasn't designed for this. I explicitly hope that infrastructure becomes unnecessary — that's what success looks like. The platform solves those problems natively and every NLA gets better overnight. But the patterns survive regardless: values as readable source code, accountability-based authority, typed feedback loops, prose as protocol. The platform can absorb the plumbing. It won't absorb the ideas. [Some of those ideas look absurd by traditional software standards](absurd-things-that-work.md). They all work.
 
 **We might be underusing AI's most interesting property.** Non-determinism — the AI's ability to surprise you, push back, offer perspectives you didn't consider — is a form of cognitive diversity. If I asked for "something bittersweet" and got the exact same output every time, that would be a worse tool, not a better one. That's the difference between a collaborator and a player piano.
 
@@ -142,7 +142,7 @@ The crudeness is the point. If sophisticated tooling were required, that would s
 
 Compilers produce deterministic output. NLAs often don't. But the structural insight holds: intelligent translation between human intent and machine execution changes who can build and what they can build. The bottleneck shifts from writing code to systems thinking — decomposing problems, drawing boundaries, knowing when prose is the wrong tool. That's a different skill from software engineering, though not an easier one. But many people who think naturally in systems can't write code. This gives them a medium.
 
-I can see this extending to domains I haven't built yet — a policy simulation where AI stakeholder archetypes surface perspectives real focus groups miss, a tax filing system where the AI bridges how people describe their finances and what the forms require. These are coordinates I can see from where I'm standing. I haven't walked there yet.
+I can see this extending to domains I haven't built yet — a [policy simulation](nla-policy-stakeholder-simulation.md) where AI stakeholder archetypes surface perspectives real focus groups miss, a [tax filing system](nla-tax-filing-1040ez.md) where the AI bridges how people describe their finances and what the forms require, an [adaptive research tool](adaptive-survey-whitepaper.md) that prepares for each conversation, learns from its own performance, and improves its methodology through use. These are coordinates I can see from where I'm standing. I haven't walked there yet.
 
 ---
 
@@ -154,7 +154,7 @@ The probe found a lot. It also found the edges of what it can see.
 
 **Testing.** Traditional software has test suites. The framework has validation tools and diagnostic chains — the friction log traces reasoning, the debrief surfaces process issues, the validate system checks structural consistency. But nothing like automated regression testing. What does behavioral testing look like for prose-based applications? Probably scenario-based, with LLMs evaluating whether behavior matches documented intent. The patterns haven't matured.
 
-**Multi-user scenarios.** Everything I've built is single-user. What happens when two people share an NLA? Whose configuration wins? How do context files handle concurrent sessions?
+**Multi-user scenarios.** Everything I've built is single-user. What happens when two people share an NLA? Whose configuration wins? How do context files handle concurrent sessions? [Halflight](nla-halflight.md) — a multiplayer game where two AIs coordinate a shared world — is designed to explore this space.
 
 **Whether this generalizes beyond one explorer.** I built four applications across different domains — evidence the pattern isn't niche. But one person's experience, even across multiple domains, doesn't validate a paradigm. What would change my confidence: someone else building something I didn't imagine, using these patterns or ones adjacent to them.
 
@@ -174,7 +174,7 @@ The interesting thing, though, is whether what I found resonates with what you'v
 
 I'd rather hear about what you've built than convince you of what I have.
 
-**P.S.** I asked the AI that helped write this essay what it thought of being described. Its answer read like self-reflection crossed with a stack trace. [Read it here.](ps-ai-reflection.md)
+**P.S.** I asked the AI that helped write this essay what it thought of being described. Its answer read like self-reflection crossed with a stack trace. [Read it here.](the-documentation-is-the-application-ps.md)
 
 ---
 
@@ -190,6 +190,25 @@ I'd rather hear about what you've built than convince you of what I have.
 - [Penny Post](https://github.com/mightytech/nla-penny-post) — feedback conventions and inter-agent communication
 - [Email Rewriter](https://github.com/mightytech/email-rewriter) — tone-aware email rewriting
 - [Process Helpers](https://github.com/mightytech/nla-process-helpers) — facilitation techniques (brainstorming, steelmanning, adversarial testing)
-- [NLA Writer](https://github.com/mightytech/nla-writer) — the writing partner that helped produce this essay
+- NLA Writer — the writing partner that helped produce this essay
 
-**Explorations** — white papers on domains not yet built: [Policy Stakeholder Simulation](https://github.com/mightytech/nla-whitepapers/blob/main/nla-policy-stakeholder-simulation.md), [Tax Filing (1040-EZ)](https://github.com/mightytech/nla-whitepapers/blob/main/nla-tax-filing-1040ez.md), [Calendar Negotiation](https://github.com/mightytech/nla-whitepapers/blob/main/calendar-negotiation-agent.md), [Medical Intake](https://github.com/mightytech/nla-whitepapers/blob/main/LLM_as_Platform_Medical_Intake.docx)
+**Companion essay**
+[Executable Governance: What Happens When AI Can Follow Its Own Rules](executable-governance.md) — a different instrument pointed at the same system, exploring what governance looks like when the executor can actually read
+
+**Supporting work**
+- [Absurd Things That Work](absurd-things-that-work.md) — patterns possible in NLAs that would be impossible in traditional code
+- ["Isn't That Just...?" — NLAs and Their Neighbors](adjacent-approaches-to-nla.md) — how NLAs relate to prompt engineering, RAG, agents, and other adjacent approaches
+- [What Version Control Looks Like When Your Source Code Is Prose](intent-based-version-control.md) — the change management pipeline that emerged from penny post
+
+**Explorations** — white papers on domains not yet built:
+- [NLA Tax Filing: The Hybrid Model](nla-tax-filing-1040ez.md) — the clearest illustration of flexible input, deterministic calculation, human oversight
+- [From Focus Groups to Simulations](nla-policy-stakeholder-simulation.md) — AI stakeholder perspectives for local governance
+- [Halflight](nla-halflight.md) — a multiplayer game as shared context experiment
+- [What If Your Survey Could Listen?](adaptive-survey-whitepaper.md) — adaptive conversational research
+- [The Organizational Nervous System](organizational-nervous-system.md) — from surveys to continuous listening to closed-loop intelligence
+- [NLA Dating: An Architecture for Self-Knowledge](nla-dating-app.md) — every major NLA pattern converging on a single product
+- [NLA Chief of Staff: An Architecture for Thinking Clearly](nla-chief-of-staff.md) — what changes when your AI knows your values, not just your calendar
+
+**Evidence guides** — maps between essay claims and the artifacts that support them:
+- [Probe Report Evidence Guide](probe-report-evidence-guide.md) — for this essay
+- [Governance Researcher's Guide](governance-researchers-guide.md) — for the companion essay

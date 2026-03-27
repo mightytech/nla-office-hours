@@ -214,3 +214,5 @@ One more question worth sitting with: Halflight is text-based because that's whe
 ---
 
 *The best games aren't the ones with the most features — they're the ones where what you don't know is more exciting than what you do.*
+
+*This is one of several explorations of [Natural Language Application](the-documentation-is-the-application.md) patterns applied to specific domains.*
