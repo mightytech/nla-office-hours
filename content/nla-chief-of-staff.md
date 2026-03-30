@@ -36,7 +36,7 @@ The NLA chief of staff begins the same way. Give it access to whatever you want 
 
 "I noticed you respond to most emails within an hour, but there are three from the past week you haven't opened. They're all about the same topic. What's going on there?"
 
-It's doing what a good chief of staff does in their first weeks — reflecting back what it's observed and asking whether the patterns are intentional. From the observation and conversation, it drafts a values document: the most personal document in the NLA ecosystem, a prose description of who you are as a decision-maker.
+It's doing what a good chief of staff does in their first weeks — reflecting back what it's observed and asking whether the patterns are intentional. From the observation and conversation, it drafts a values document: the most personal document in the NLA ecosystem, a prose description of who you are as a decision-maker and who you want to be as a person.
 
 "I tend to say yes to meetings I should decline. Push back when I accept a meeting that doesn't connect to my stated priorities."
 
@@ -44,7 +44,11 @@ It's doing what a good chief of staff does in their first weeks — reflecting b
 
 "I avoid difficult conversations. When I defer a personnel issue more than twice, flag it."
 
+"When I'm under pressure I hedge the truth to avoid conflict. If a draft email softens bad news past the point of honesty, call it out."
+
 "My quarterly priority is the product launch. If I'm spending more than 30% of my time on anything else, tell me."
+
+"I value giving credit accurately. When I'm writing up results, make sure I'm naming the people who did the work."
 
 You refine it. Some entries you'll recognize immediately — yes, that's exactly right. Others you'll push back on — the AI noticed a pattern but misread the cause. The refinement itself is valuable: the conversation about whether the pattern is real forces an articulation most people never make.
 
