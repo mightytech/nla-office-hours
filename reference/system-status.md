@@ -1,6 +1,6 @@
 # System Status
 
-Last updated: 2026-03-05
+Last updated: 2026-03-30
 
 ## Tasks
 
@@ -30,6 +30,9 @@ Last updated: 2026-03-05
 
 ## Recent Changes
 
+- 2026-03-30: Updated framework to `b63ed87` (log-only — no intent changes)
+- 2026-03-30: Permission behavior test for framework; results sent as nla-framework#15
+- 2026-03-12: Git repo initialized, README cleaned up
 - 2026-03-09: Installed penny post extension (`/check-feedback`, `/write-letter`)
 - 2026-03-09: Updated framework (validate wrapper — added coherence review mode)
 - 2026-03-05: Project created via `/create-app`

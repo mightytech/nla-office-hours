@@ -21,6 +21,16 @@ Record of NLA packages installed in this project. Maintained by `/install` and `
 
 **Notes:** Framework also added `validate-coherence.md` core file and updated `validate.md` dispatcher — both propagate automatically via thin wrapper delegation.
 
+### Updated 2026-03-30
+
+**Package state:** commit `b63ed87`
+
+| Intent File | What Changed | Changes Made |
+|-------------|-------------|--------------|
+| (none) | No intent file changes | No integration changes needed |
+
+**Notes:** Three framework-internal commits since last update: example catalog additions (Office Hours, Claude Code Manager, revised complexity scale), friction log entry, session logs. No intent files modified — update is log-only.
+
 ---
 
 ## Penny Post
