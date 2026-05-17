@@ -10,7 +10,7 @@ That was the third thing I built, and the one that made me think the pattern was
 
 Then a fourth: a developer tool that deposits configuration into codebases, invisible to the developers who benefit from it.
 
-Four small applications. The thing they shared wasn't a language or a framework in the traditional sense — it was an architectural inversion. In all four, the documentation *is* the application. Not documentation about the application. The application. The "source code" is prose. The runtime is an LLM. Change behavior? Edit a document. Add a feature? Write one. The AI reads the docs and does what they say.
+Four small applications. The thing they shared wasn't a language or a framework in the traditional sense — it was an architectural inversion. In all four, the documentation *is* the application. Not documentation about the application. The application. More precisely: the documentation is the *source code*, and the LLM is the runtime that reads it. Both framings hold. The application framing names the experience — you interact with the docs as a working thing. The source-code framing names the mechanic — you edit prose to change running behavior. The traditional compiler step is gone; there's no separate artifact you ship. Change behavior? Edit a document. Add a feature? Write one. The AI reads the docs and does what they say.
 
 All the application logic is prose. The only traditional code is plumbing — API calls, file I/O, audio synthesis. Everything else is prose that an AI executes — prose that handles rollback safety, detects conflicts between directives, and guards against its own hallucination. Write the application in English. Use it in Japanese. Nobody builds that feature.
 
