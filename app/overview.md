@@ -45,6 +45,7 @@ The explore task reads from two directions: the articles explain the ideas, the 
 | `/export` | Export as a plugin | When preparing for distribution |
 | `/think` | Collaborative design exploration | When work needs design judgment first |
 | `/debrief` | Reflect on completed work | After substantive work |
+| `/session-checkpoint` | Mid-session save point — preserve state, refresh context | Between work phases or before reasoning from older context |
 | `/close` | Wrap up a session | When a session is ending |
 | `/guide` | Context-aware help | When you need orientation |
 | `/check-feedback` | Discover and triage external feedback | When checking what others have submitted |

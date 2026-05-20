@@ -1,6 +1,6 @@
 ---
 name: validate
-description: Validate the NLA system — structural checks, architecture review, scenario walkthroughs, debug unexpected behavior, or coherence review.
+description: Validate the NLA system — structural checks, architecture review, scenario walkthroughs, debug unexpected behavior, coherence review, or standards review.
 disable-model-invocation: true
 ---
 
