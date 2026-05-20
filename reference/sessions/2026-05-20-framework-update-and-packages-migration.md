@@ -1,7 +1,7 @@
 # Maintenance Session: Framework Update and Packages Migration
 
 **Date:** 2026-05-20
-**Status:** In Progress
+**Status:** Complete (pending push + tag at `/close`)
 
 ## Intent
 
@@ -23,15 +23,30 @@ Splitting them so each lands as its own coherent commit and the diff stays revie
 - **`.claude/skills/validate/SKILL.md`** — description updated to include "standards review" mode (framework change 2026-05-04).
 - **`.claude/skills/export/SKILL.md`** — description updated to match the framework's view-source export rewrite (2026-04-16).
 
-### Step 2 — packages migration (pending)
+### Step 2 — packages migration (complete)
 
-To do:
-- `git submodule add` for framework and penny-post (with tagged-release prompt for each).
-- Verify all 14 thin wrappers are still thin delegates (no ejected customization).
-- `sed` sweep on `.claude/skills/*/SKILL.md` to rewrite `../nla-framework/` → `packages/nla-framework/` and `../nla-penny-post/` → `packages/nla-penny-post/`.
-- Targeted edits to `CLAUDE.md` (Environment section, penny post note), `README.md`, `reference/installed-packages.md`, `app/overview.md`.
-- Remove `Read(../nla-framework/**)` and `Read(../nla-penny-post/**)` from `.claude/settings.local.json` if present.
-- Run `/validate` structural check.
+Landed across three commits:
+
+**Chunk A — `Add packages/ submodules`** (`69b95d7`):
+- Added `packages/nla-framework/` as submodule pinned at `v0.0.9` (commit `b1d021b`).
+- Added `packages/nla-penny-post/` as submodule pinned at `v0.0.1` (commit `1ef501e`).
+- Verified all 15 existing wrappers were thin delegates before proceeding.
+
+**Chunk B — `Rewrite paths from sibling-directory to packages/ submodule convention`** (`9370028`):
+- Sed sweep over 16 thin wrappers (`.claude/skills/*/SKILL.md`): `../nla-framework/` → `packages/nla-framework/`, `../nla-penny-post/` → `packages/nla-penny-post/`.
+- Updated CLAUDE.md (Modes section, build-NLA pointer, Environment section — added `packages/` row to directory table, refreshed framework + penny-post location notes).
+- Updated README.md (Prerequisites note now describes submodule init; directory tree includes `packages/`).
+- Updated app/overview.md (opening paragraph + ASCII diagram).
+- Updated app/explore.md (Sources section + Penny Post install hint) and app/shared/common-patterns.md (build-NLA redirect).
+- Updated reference/installed-packages.md (Source paths for both packages + new 2026-05-20 update records under each package's section).
+- Removed now-redundant `Read(.../nla-framework/**)` and `Read(.../nla-penny-post/**)` from `.claude/settings.local.json` (gitignored — local edit only).
+
+**Chunk C — structural validation + system-status refresh** (this commit):
+- Ran `/validate` structural check via subagent. Found 2 issues, both outside the migration scope itself.
+- Fixed: `reference/system-status.md` was stale (missing `/session-checkpoint`, old "Last updated" date, no Recent Changes entry for today's migration).
+- Deferred: open 2026-03-05 friction entry still references `../nla-framework/...` path — will be updated when that entry is processed.
+
+Net effect: every cross-directory `Read(...)` permission this NLA needed before now resolves in-project. The 2026-03-30 permission-friction feedback log entry is structurally resolved by the migration; will be marked resolved + archived at `/close`.
 
 ## Decisions Made
 
@@ -42,11 +57,15 @@ To do:
 
 ## What Didn't Work
 
-(Nothing abandoned yet.)
+- Initial `git add` for chunk B included `.claude/settings.local.json`, which is gitignored. Recovered with `git reset` and re-added without it. Worth noting that the structure-intent doc spells this out — settings.local.json is local-only by design.
 
 ## Friction Log Entries Processed
 
-- (None processed this session — the 2026-03-05 entry about architecture review remains open. Migration will likely close out the permission-friction line indirectly.)
+- **2026-03-05 (Architecture review applies traditional software thinking to NLA patterns):** still open. Path in the entry's "Affected documentation" field now stale (`../nla-framework/...`) but deferred — will be updated when the entry itself is processed. The entry is framework-level and remains a letter candidate.
+
+## Feedback Log Entries Pending Resolution
+
+- **2026-03-30 (Permission behavior test — symlinks vs. direct sibling reads):** Should be marked resolved as part of this session's `/close`. The framework's packages/ migration (which this NLA just adopted) is the structural fix for the permission friction the test was investigating. Original feedback ask (run the test and report) was completed in March; the underlying friction is now resolved.
 
 ## Debrief
 
@@ -54,4 +73,12 @@ To do:
 
 ## State at Close
 
-(Pending — will be filled in at `/close`.)
+**What's working:** Submodules pinned to tagged releases. All operative content references the new `packages/` paths. Structural validation clean. system-status.md current.
+
+**What's pending:**
+- Push to origin (with annotated tag) at `/close`.
+- Mark feedback log entry for 2026-03-30 permission test as resolved.
+- The 2026-03-05 architecture-review friction log entry remains open (oldest open item; framework-level; potential letter candidate).
+- Four local-only commits in `../nla-framework/` are intentionally not in the submodule pin — they sit unpushed in the framework's working tree. If they ought to ship, that's a framework-side push.
+
+**Where to pick up:** The architecture-review friction entry is the longest-standing open item. The permission line is structurally resolved as of today.

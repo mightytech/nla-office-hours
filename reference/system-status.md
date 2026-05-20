@@ -1,6 +1,6 @@
 # System Status
 
-Last updated: 2026-03-30
+Last updated: 2026-05-20
 
 ## Tasks
 
@@ -23,6 +23,7 @@ Last updated: 2026-03-30
 | `/export` | Active | Framework wrapper |
 | `/think` | Active | Framework wrapper |
 | `/debrief` | Active | Framework wrapper |
+| `/session-checkpoint` | Active | Framework wrapper |
 | `/close` | Active | Framework wrapper |
 | `/guide` | Active | Framework wrapper |
 | `/check-feedback` | Active | Penny post wrapper |
@@ -30,6 +31,8 @@ Last updated: 2026-03-30
 
 ## Recent Changes
 
+- 2026-05-20: **Packages/ migration** — framework and penny-post moved from sibling directories to git submodules at `packages/nla-framework/` (v0.0.9) and `packages/nla-penny-post/` (v0.0.1). Resolves nla-framework#15 permission friction.
+- 2026-05-20: Applied framework intent updates — "NLA documents are source code" reframe, new "Default to prose for design conversations" execution principle, new `/session-checkpoint` skill, `/validate` and `/export` description refresh.
 - 2026-03-30: Updated framework to `b63ed87` (log-only — no intent changes)
 - 2026-03-30: Permission behavior test for framework; results sent as nla-framework#15
 - 2026-03-12: Git repo initialized, README cleaned up
