@@ -34,8 +34,9 @@ If that sounds unusual, two paths for the curious:
 ### Prerequisites
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
-- [NLA Framework](https://github.com/mightytech/nla-framework), cloned as
-  a sibling directory (see the framework README for setup)
+- [NLA Framework](https://github.com/mightytech/nla-framework) — pulled in as
+  a git submodule at `packages/nla-framework/`. If you cloned without
+  `--recurse-submodules`, run `git submodule update --init` once to fetch it.
 
 ### Quick Start
 
@@ -94,6 +95,7 @@ nla-office-hours/
 │       ├── voice.md              # Tone and personality
 │       └── common-patterns.md    # Recurring question patterns
 ├── content/                      # Published articles and whitepapers
+├── packages/                     # Git submodule dependencies (framework + extensions)
 ├── reference/                    # Maintenance records
 │   ├── design-rationale.md       # Why the system is built this way
 │   ├── friction-log.md           # Internal observations

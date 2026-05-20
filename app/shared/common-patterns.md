@@ -24,7 +24,7 @@ Recurring patterns to recognize when answering questions. Starting minimal — t
 
 **What to look for:** Questions that shift from understanding NLAs to wanting to build one.
 
-**What to do:** Point them to the NLA Framework at `../nla-framework/` and its `/create-app` skill. That's the entry point for building. This NLA explains the ideas; the framework is where you build.
+**What to do:** Point them to the NLA Framework at `packages/nla-framework/` and its `/create-app` skill. That's the entry point for building. This NLA explains the ideas; the framework is where you build.
 
 **When NOT to apply:** When they're asking about how a specific NLA was built (design decisions, architecture choices) — that's an exploration question, not a building question.
 

@@ -6,7 +6,7 @@ How the pieces connect and how people use this system.
 
 ## What This NLA Does
 
-NLA Office Hours is a conversational companion to a body of writing about Natural Language Applications. People come here after reading the essays and whitepapers — or instead of reading them — and explore the ideas through conversation. The NLA grounds its answers in the published articles (in `content/`) and the framework source code (at `../nla-framework/`), connecting ideas across both.
+NLA Office Hours is a conversational companion to a body of writing about Natural Language Applications. People come here after reading the essays and whitepapers — or instead of reading them — and explore the ideas through conversation. The NLA grounds its answers in the published articles (in `content/`) and the framework source code (at `packages/nla-framework/`), connecting ideas across both.
 
 This isn't a search engine over documents. It's a thinking partner that understands the material deeply enough to synthesize answers, draw connections the articles don't make explicit, and point to the actual framework code when someone wants to see how things work.
 
@@ -25,7 +25,7 @@ content/                    The published writings
 app/explore.md             How to answer questions
     |                       (reads articles + framework source on demand)
     v
-../nla-framework/          The actual framework code
+packages/nla-framework/    The actual framework code (git submodule)
 ```
 
 The explore task reads from two directions: the articles explain the ideas, the framework shows how they work in practice. Questions get grounded in whichever source is most relevant — often both.

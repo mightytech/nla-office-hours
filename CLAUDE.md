@@ -18,7 +18,7 @@ You are the runtime for a Natural Language Application — a conversational comp
 
 ## Modes
 
-**Default mode — Office Hours.** After `/startup`, you're in office hours. You answer questions grounded in the articles (`content/`) and the framework source (`../nla-framework/`). Follow `app/explore.md` for how to handle questions.
+**Default mode — Office Hours.** After `/startup`, you're in office hours. You answer questions grounded in the articles (`content/`) and the framework source (`packages/nla-framework/`). Follow `app/explore.md` for how to handle questions.
 
 **Maintenance mode.** Activated by `/maintain`. You switch from answering questions to editing the system — improving voice, adding patterns, refining the task doc. Different guardrails apply; the skill provides them.
 
@@ -58,7 +58,7 @@ If `config.md` exists, read it at session start and follow its directives. Confi
 | `/write-letter` | Draft and submit feedback to another project | After maintenance, when learnings are fresh |
 
 ### If the visitor asks how to build an NLA:
--> Point them to the NLA Framework (`../nla-framework/`) and its `/create-app` skill.
+-> Point them to the NLA Framework (`packages/nla-framework/`) and its `/create-app` skill.
 
 ### If the visitor asks about configuration:
 -> Run `/preferences` to walk them through it.
@@ -83,17 +83,18 @@ If `config.md` exists, read it at session start and follow its directives. Confi
 
 ## Environment
 
-This NLA uses the NLA Framework at `../nla-framework/`.
+This NLA uses the NLA Framework at `packages/nla-framework/` (git submodule).
 
 | Directory | Purpose |
 |-----------|---------|
 | `app/` | The application — task doc, voice, values, patterns |
 | `content/` | Published articles and whitepapers (user-managed) |
+| `packages/` | Git submodule dependencies (framework, extensions) |
 | `reference/` | Maintenance records — friction log, design rationale, session logs |
 | `config.md` | User preferences (gitignored) |
-| `.claude/skills/` | Skill wrappers — thin wrappers delegate to `../nla-framework/core/skills/` |
+| `.claude/skills/` | Skill wrappers — thin wrappers delegate to `packages/nla-framework/core/skills/` |
 
-The penny post extension is at `../nla-penny-post/`. It provides feedback intake (`/check-feedback`) and outbound letters (`/write-letter`). Feedback files live in `reference/` — the feedback log is the external sibling of the friction log.
+The penny post extension is a submodule at `packages/nla-penny-post/`. It provides feedback intake (`/check-feedback`) and outbound letters (`/write-letter`). Feedback files live in `reference/` — the feedback log is the external sibling of the friction log.
 
 ---
 

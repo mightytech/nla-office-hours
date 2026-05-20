@@ -4,4 +4,4 @@ description: Draft and submit a feedback letter to another project. Best used af
 disable-model-invocation: true
 ---
 
-Read and follow `../nla-penny-post/app/write-letter.md`.
+Read and follow `packages/nla-penny-post/app/write-letter.md`.
