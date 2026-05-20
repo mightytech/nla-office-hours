@@ -43,7 +43,7 @@ Record of NLA packages installed in this project. Maintained by `/install` and `
 | `install.md` | Framework now a submodule, not a sibling; `Read(../nla-framework/**)` removed from declared permissions | Removed `Read(...nla-framework/**)` and `Read(...nla-penny-post/**)` from `.claude/settings.local.json` |
 | `package-intent.md` | Shippability convention; package wrappers point at `packages/[name]/` | Carried into penny-post handling (see Penny Post entry below) |
 
-**Notes:** This is the packages/ migration (framework change 2026-04-15). Both dependencies moved from sibling directories to git submodules pinned at their latest tagged releases. Resolves the long-standing permission-friction issue documented in feedback-log (`#1`, 2026-03-30) and reported to the framework as nla-framework#15. Four local-only framework commits (incl. `a57d225` foundations recalibration) remain unpushed in `../nla-framework/`; the submodule is pinned to origin's v0.0.9 per user direction.
+**Notes:** This is the packages/ migration (framework change 2026-04-15). Both dependencies moved from sibling directories to git submodules pinned at their latest tagged releases. Resolves the long-standing permission-friction issue documented in feedback-log (`#1`, 2026-03-30) and reported to the framework as nla-framework#15. Four local-only framework commits (incl. `a57d225` foundations recalibration) remain unpushed in the framework maintainer's working tree at `../nla-framework/` (separate from this project's submodule, which reads from `packages/nla-framework/`); the submodule is pinned to origin's v0.0.9 per user direction.
 
 ---
 

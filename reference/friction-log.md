@@ -37,6 +37,18 @@ Not all fields are required. Use what's relevant.
 
 ## Entries
 
+### 2026-05-20: app/explore.md and app/overview.md don't restate the "NLA documents are source code" principle
+
+- **Type:** Documentation
+- **Severity:** Minor
+- **Task:** Explore (operative)
+- **Status:** Open
+- **Observation:** During the post-migration coherence and standards reviews, the load-bearing operative doc (`app/explore.md`, read on every question) and `app/overview.md` describe the system without restating the "NLA documents are source code" framing. CLAUDE.md carries it twice (grounding + execution), the README opens with it, but `explore.md` and `overview.md` start cold. The principle does land via CLAUDE.md being loaded at startup, so this isn't a behavioral break — but it's a self-containment gap by writing standard 8.3, and explore.md's job is to be self-sufficient for the explore task.
+- **Generalizable:** Yes — a recurring pattern when reframing a foundational principle (here: framework's 2026-04-18 reframe) is that the reframe lands in CLAUDE.md but doesn't propagate down into task docs and the orientation doc. Worth watching for similar drift after future framework principle changes.
+- **Affected documentation:** `app/explore.md` (Sources section is the natural place); `app/overview.md` (What This NLA Does section).
+- **Proposed fix:** Add a one-sentence frame to each — explore.md's Sources section could lead with the principle ("The articles and the framework source aren't documentation about an application — they're the application itself"); overview.md's What This NLA Does could include a single sentence anchoring the principle. Not a re-explanation, just an anchor.
+- **Notes:** Deferred to a future `/maintain` session — the edit needs voice judgment, not the mechanical batch this session was running.
+
 ### 2026-03-05: Architecture review applies traditional software thinking to NLA patterns
 
 - **Type:** Process

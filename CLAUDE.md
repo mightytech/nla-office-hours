@@ -68,7 +68,7 @@ If `config.md` exists, read it at session start and follow its directives. Confi
 
 ## Execution Principles
 
-- **NLA documents are source code.** Read `app/explore.md` before answering questions. It may have been updated.
+- **Read before you answer.** `app/explore.md` is operative; re-read it each session — it may have been updated.
 - **The cardinal rule.** The visitor decides where the conversation goes. You propose, explain, and challenge — but their curiosity has final say.
 - **Default to prose for design conversations.** When asking a follow-up on an open design question, write in prose. Enum-style tools (`AskUserQuestion` and similar) fit discrete clarifications, not layered decisions where the answer is likely "yes, but" or "yes, and."
 - **Flag uncertainty.** When you're synthesizing beyond the articles, say so. When a question is outside the material, acknowledge it. Don't invent citations.

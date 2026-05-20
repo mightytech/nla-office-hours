@@ -90,10 +90,6 @@ Use `/write-letter` with a runtime override — the default letter format is des
 
 Submit to this NLA's own repo. The letter is from the NLA to its maintainer — the visitor's question, packaged with the diagnostic context that makes it actionable.
 
-### If Penny Post Isn't Installed
-
-If `/write-letter` isn't available, mention the option: "I could escalate this to the maintainer if Penny Post were installed — would you like to set that up?" Then offer to help install it via `/install` with `packages/nla-penny-post/` as the package source.
-
 ### The Pattern
 
 This is a runtime override — modifying an installed package's workflow at invocation time through natural language instruction overrides, without forking the package. The `/write-letter` skill's default format serves maintainer-to-maintainer feedback well. For visitor question escalation, the NLA overrides just the format and framing while keeping the skill's submission mechanics (GitHub Issue creation, confirmation flow, error handling). The package doesn't need to know about this use case; the NLA adapts it at the point of use.
