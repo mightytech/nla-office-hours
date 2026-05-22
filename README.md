@@ -96,6 +96,7 @@ nla-office-hours/
 │       └── common-patterns.md    # Recurring question patterns
 ├── content/                      # Published articles and whitepapers
 ├── packages/                     # Git submodule dependencies (framework + extensions)
+├── examples/                     # Example NLAs as git submodules — source material
 ├── reference/                    # Maintenance records
 │   ├── design-rationale.md       # Why the system is built this way
 │   ├── friction-log.md           # Internal observations
@@ -149,12 +150,22 @@ contributions — it's different from most open source.
 
 ## Upgrading
 
+To pull the latest version of the project — including any newer pins on
+framework, packages, and example NLAs:
+
 ```bash
 git pull
+git submodule update --init --recursive
 ```
 
-For framework and package updates, run `/update` — it pulls remote changes,
-compares current intent against what was installed, and proposes changes.
+`git pull` advances the parent repo (which may move submodule pointers).
+`git submodule update --init --recursive` then checks out the new pointers
+and initializes any submodules that weren't present before.
+
+`/update` is a maintainer-only tool — it advances submodule pins to newer
+remote versions *and* integrates intent changes from updated packages into
+this project's own files. End users don't need it; pulling the parent repo
+already gives them whatever pins the maintainer has integrated.
 
 ---
 

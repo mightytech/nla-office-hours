@@ -4,3 +4,12 @@
 [submodule "packages/nla-penny-post"]
 	path = packages/nla-penny-post
 	url = https://github.com/mightytech/nla-penny-post.git
+[submodule "examples/copydesk"]
+	path = examples/copydesk
+	url = https://github.com/mightytech/copydesk.git
+[submodule "examples/duet"]
+	path = examples/duet
+	url = https://github.com/mightytech/duet.git
+[submodule "examples/nla-claude-code"]
+	path = examples/nla-claude-code
+	url = https://github.com/mightytech/nla-claude-code.git

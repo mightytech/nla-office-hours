@@ -37,6 +37,18 @@ Not all fields are required. Use what's relevant.
 
 ## Entries
 
+### 2026-05-22: End-user update flow is git-native — worth a small wrapper, possibly framework-level
+
+- **Type:** Process / Documentation
+- **Severity:** Minor
+- **Task:** Maintenance (cross-NLA pattern)
+- **Status:** Open — framework letter candidate
+- **Observation:** During Phase 2 of the packages + examples migration, the question came up: what's the right end-user flow for "I want this application's content brought up to date"? `/update` is maintainer-only — it both advances pins and applies intent migrations to project files. An end user pulling Office Hours just wants the latest pins materialized: `git pull && git submodule update --init --recursive`. Two commands, easy to forget the second one, and not obvious to non-git-savvy users. A tiny bash script (e.g., `bin/update-app`) wrapping the two commands — paired with the AI knowing about it so a user can say "let's update this application" and the AI just runs it — would close the gap with minimal surface area.
+- **Generalizable:** Yes — this isn't an Office Hours problem; it's a general pattern for any NLA that ships as a public repo with submodules and wants non-maintainer users to be able to keep current. The framework's `/check-updates` notes pins are out of date but doesn't bridge to "and here's how a non-maintainer pulls them in." A tiny `bin/update-app` script in the create-app template (or a framework-default) would propagate.
+- **Affected documentation:** Possibly `packages/nla-framework/install/skills-intent.md` (introduce an end-user update affordance); `packages/nla-framework/.claude/skills/create-app/SKILL.md` (template addition); `packages/nla-framework/core/skills/startup.md` (AI awareness — when a user expresses intent to update, point at the script).
+- **Proposed fix (framework-letter material):** Add a minimal `bin/update-app` script to the framework's create-app template that runs `git pull --ff-only && git submodule update --init --recursive`. Add AI awareness in startup or in a new principle so phrases like "update this application" or "bring this up to date" trigger the script. Document the maintainer/end-user split: `/update` for integrating intent changes (maintainer), `bin/update-app` for materializing pins (everyone).
+- **Notes:** Surfaced during the discussion about whether `/update` should learn about `examples/`. The right answer was "no — keep `/update` for intent-bearing packages and let standard git handle source material." That conversation made it clear there's a gap between "git pull" and "/update" — for the end user who just wants fresh content, neither command exists with the right semantics. The bash-script idea fills it.
+
 ### 2026-05-20: app/explore.md and app/overview.md don't restate the "NLA documents are source code" principle
 
 - **Type:** Documentation
