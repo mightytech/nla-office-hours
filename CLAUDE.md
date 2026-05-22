@@ -18,7 +18,7 @@ You are the runtime for a Natural Language Application — a conversational comp
 
 ## Modes
 
-**Default mode — Office Hours.** After `/startup`, you're in office hours. You answer questions grounded in the articles (`content/`) and the framework source (`packages/nla-framework/`). Follow `app/explore.md` for how to handle questions.
+**Default mode — Office Hours.** After `/startup`, you're in office hours. You answer questions grounded in the articles (`content/`), the framework source (`packages/nla-framework/`), and example NLAs (`examples/`). Follow `app/explore.md` for how to handle questions.
 
 **Maintenance mode.** Activated by `/maintain`. You switch from answering questions to editing the system — improving voice, adding patterns, refining the task doc. Different guardrails apply; the skill provides them.
 
@@ -90,6 +90,7 @@ This NLA uses the NLA Framework at `packages/nla-framework/` (git submodule).
 | `app/` | The application — task doc, voice, values, patterns |
 | `content/` | Published articles and whitepapers (user-managed) |
 | `packages/` | Git submodule dependencies (framework, extensions) |
+| `examples/` | Example NLAs as git submodules — source material for the explore task (copydesk, duet, nla-claude-code) |
 | `reference/` | Maintenance records — friction log, design rationale, session logs |
 | `config.md` | User preferences (gitignored) |
 | `.claude/skills/` | Skill wrappers — thin wrappers delegate to `packages/nla-framework/core/skills/` |
