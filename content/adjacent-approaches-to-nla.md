@@ -38,7 +38,7 @@ What I'm claiming is that the pieces form a system where each depends on the oth
 
 ## The comparisons
 
-*Nearest neighbors — approaches that manage what the model sees:*
+*Closest by technique — approaches that manage what the model sees:*
 
 ### "Isn't that just prompt engineering?" / "So it's like context engineering?"
 
@@ -46,11 +46,17 @@ What I'm claiming is that the pieces form a system where each depends on the oth
 
 **Where they overlap:** Both treat natural language as a control surface for AI behavior. Both start from "what the model sees determines what it can do." NLAs depend on techniques from both.
 
-**The actual difference:** A prompt is stateless and single-use. Context engineering optimizes what the model sees during a single inference call or agent run. An NLA maintains a corpus of artifacts — values, skills, logs, feedback, design rationale — that constitute durable software. The friction log captures what went wrong across hundreds of sessions and changes the application permanently. Context engineering asks "how do I give the model the right information right now?" NLAs ask "how does the application evolve to be better over time?"
+**The actual difference:** Two things, related but distinct.
+
+The first is durability. A prompt is stateless and single-use. Context engineering optimizes what the model sees during a single inference call or agent run. An NLA maintains a corpus of artifacts — values, skills, logs, feedback, design rationale — that constitute durable software. The friction log captures what went wrong across hundreds of sessions and changes the application permanently. Context engineering asks "how do I give the model the right information right now?" NLAs ask "how does the application evolve to be better over time?"
+
+The second is stance. Prompt engineering tends to treat AI behavior as something to *control* — instructions that constrain a model toward reliable outputs. NLA prose tends to treat AI behavior as something to *constitute* — descriptions of identity, purpose, and discipline that the model inhabits during the session. This shows up in concrete writing differences: rationale alongside conventions, authority levels (must / prefer / nice-to-have) so the model can tell which rules are load-bearing, identity descriptions before procedures, explicit permission to exceed the document when the document is wrong. None of these are individually impossible in a prompt. The shift is that they become the dominant idiom rather than occasional techniques.
+
+Underneath, these techniques share a property: each works by writing *against* a specific pattern-matching tendency rather than for a generic behavior. Rationale gives the model traction to override a rule's letter when its spirit conflicts. Authority levels prevent the model from flattening every guideline to the same weight. Permission to exceed the document keeps standards from being read as walls. And identity descriptions, when they're working, are specific enough to resist the model's default stereotypes — the opposite move from "you are an expert X" persona prompts, which *invoke* a generic pattern instead of constituting a specific one.
 
 Academic work on natural-language programming (like CoRE) pushes further still, with more rigorous execution semantics — formal representations, structured interpreter models. NLAs embrace the ambiguity that this research treats as a problem to solve. That might be trading rigor for flexibility in ways that don't scale.
 
-**Where this challenges NLAs:** The prompt engineering community has developed sophisticated techniques — chain of thought, few-shot examples, structured outputs — that NLAs rely on without always acknowledging. Context engineering might be the more practical framing: it works within existing architectures without requiring a paradigm shift. And the line between "a really well-maintained collection of prompts with good context management" and "an NLA" might be blurrier than I'd like to admit. If context engineering matures into full application lifecycle management, the gap NLAs claim to fill could narrow considerably.
+**Where this challenges NLAs:** The prompt engineering community has developed sophisticated techniques — chain of thought, few-shot examples, structured outputs — that NLAs rely on without always acknowledging. Context engineering might be the more practical framing: it works within existing architectures without requiring a paradigm shift. The constitute-vs-control distinction is a tendency, not a wall — a maximally disciplined system prompt with rationale, authority levels, and identity language gets most of the way there. If context engineering matures into full application lifecycle management, the gap NLAs claim to fill could narrow considerably.
 
 ---
 
@@ -66,7 +72,7 @@ Academic work on natural-language programming (like CoRE) pushes further still, 
 
 ---
 
-*Tools that already do something close:*
+*Closest by product — tools that ship something NLA-shaped:*
 
 ### "That sounds like Anthropic's skills"
 
@@ -86,13 +92,17 @@ Academic work on natural-language programming (like CoRE) pushes further still, 
 
 **Where it overlaps:** Directly analogous to lightweight skill files. Prose instructions that shape AI behavior. Developers already intuit that curated text artifacts are a practical control mechanism.
 
-**The actual difference:** Cursor rules and AGENTS.md support a conventional codebase — they make the AI a better assistant for writing traditional code. They're static (written once, occasionally updated) with no structured process for identifying what works and what doesn't. NLAs treat the documentation as the application itself, with feedback loops that make it improve through use.
+**The actual difference:** Cursor rules and AGENTS.md support a conventional codebase — they make the AI a better assistant for writing traditional code. They're typically static (written once, occasionally updated) with no structured process for identifying what works and what doesn't, and they tend toward enumerated rules rather than rationale-backed intent. NLAs treat the documentation as the application itself, with feedback loops that improve it through use, and they tend to write standards rather than rules — describing patterns and why they matter so the AI can reason about cases the document didn't anticipate.
 
-**Where this challenges NLAs:** Cursor rules are wildly practical. They work in existing workflows, require no paradigm shift, and solve real problems today. If someone gets 80% of the NLA benefit from a well-written `.cursorrules` file, the remaining 20% (learning loops, values, governance) might not justify the complexity. And the observation that cursor rules are "one mental shift away from NLAs" cuts both ways — maybe the mental shift isn't necessary. Maybe the incremental approach is better.
+The difference is visible in concrete artifacts. A repo-level rules file might tell a coding agent: "use `type` not `interface`," "always inline format args," "never add code in directory X." A standards document used in the same role might say: "prefer `type` over `interface` because it supports unions, intersections, and mapped types — though declaration merging for library augmentation is the exception worth knowing." The first kind tells the AI what to do. The second tells it how to think about the work so it can decide what to do in cases the document didn't anticipate.
+
+**Where this challenges NLAs:** Cursor rules are wildly practical. They work in existing workflows, require no paradigm shift, and solve real problems today — that's a real challenge to NLAs, which take more setup before the infrastructure starts paying off. Looking at well-regarded published AGENTS.md and rules files, the dominant idiom is enumeration with localized technical rationale. Authority levels and NLA-style identity descriptions are absent; even the best examples — Airflow's AGENTS.md is the most sophisticated I've seen — use anti-pattern-matching writing only in occasional sections rather than as the document's default mode. The constitute-style approach isn't structurally impossible in this format; it just isn't yet how these documents are typically written.
+
+The observation that cursor rules are "one mental shift away from NLAs" cuts both ways. Maybe the mental shift isn't necessary right now. Or maybe the right path isn't an either/or — you can keep a rules-style file in each project while using NLA-style infrastructure to maintain and evolve it across projects, with learnings about AI behavior in one project feeding back into the conventions deposited into the next. [nla-claude-code](https://github.com/mightytech/nla-claude-code) is one tool that implements this pattern. The rules file stays simple; the system improving it gets richer.
 
 ---
 
-*Different kinds of AI software:*
+*Different design centers — kinds of AI software with other priorities:*
 
 ### "Isn't this just vibe coding?"
 
@@ -128,15 +138,23 @@ And agent frameworks have human-in-the-loop modes too. The distinction isn't as 
 
 **What it is:** MCP (Anthropic) standardizes how AI models access external tools and data sources. A2A (Google) standardizes how agents communicate. Both are interoperability protocols.
 
-**Where it overlaps:** NLAs can use MCP for tool access. AI-to-AI coordination (penny post) is a concern shared with A2A.
+**Where it overlaps:** NLAs can use MCP for tool access. Penny post is one answer to the same question A2A asks: how should AI systems coordinate with each other?
 
-**The actual difference:** These operate at different levels. MCP and A2A are plumbing — they define interfaces, message formats, and connection standards. NLAs are the layer that decides *what to send through the plumbing and why.* MCP lets an AI read a database. The NLA's skill file says when to read it, what to do with the results, and when the answer requires human judgment instead. They're complementary, not competing.
+**The actual difference:** Two domains of AI work need different protocols.
 
-The penny post comparison with A2A is worth noting: A2A standardizes programmatic agent-to-agent communication at machine speed. Penny post handles judgment-rich, asynchronous coordination through prose. Different problem shapes. Both legitimate.
+*AI-to-code* — calling tools, querying APIs, scheduling on calendars. Structured operations need structured protocols. MCP fits here, and NLAs use it.
+
+*AI-to-AI* — two AI systems coordinating on something judgment-rich on behalf of their humans. A human's preference for a meeting isn't *preferredDate, preferredFormat, fallback* — it's "He prefers Monday afternoon in person, but could do virtual any afternoon this week." That prose carries soft constraints, conditional logic, social context, and the reason the preferences exist. None of it reduces to schema fields without loss.
+
+Penny post is one answer to this domain: AI systems exchange prose letters, with the receiving AI reading and responding using judgment. A2A as currently implemented is the wrong tool here — it requires forcing prose-shaped content through schemas. If A2A evolves to support prose messages with judgment-rich interpretation, it converges toward what penny post does. Either way, both kinds of protocol are needed, often in the same agent: MCP for the calendar API, prose for the negotiation about which meeting to book.
+
+Prose also unlocks a different kind of interoperability. Schema-based protocols require agents to share data models — both sides must agree on what a "MeetingRequest" carries and what its fields mean. Prose drops that requirement: a Google Calendar agent and an Exchange Calendar agent each need to operate their own calendar and read/write prose, nothing more. Capability constraints arrive inside the conversation rather than through a separate discovery layer — "I can't schedule virtual meetings; any morning but Tuesday is free on my end" carries the limit and the counter-proposal in one message.
+
+**Where this challenges NLAs:** A2A has Google's backing and momentum. Much of what looks like "AI-to-AI" work is actually structured exchange in disguise (scheduling automation, document handoff) where A2A is the right tool. Prose-based protocols also need a security architecture — the receiving AI must treat incoming messages as untrusted content scoped to a known purpose, not as instructions to follow. That's the same defensive posture used elsewhere for untrusted prose in agentic systems, but it needs care, and the work is differently shaped from (not categorically harder than) the equivalent work for schema-based protocols. Penny post needs an ecosystem to be useful, and ecosystems take time to develop. The most likely near-term path is NLAs using MCP for AI-to-code while AI-to-AI patterns mature.
 
 ---
 
-*Established practices in a new medium:*
+*Older traditions in a new medium — established disciplines being adapted:*
 
 ### "What about AI governance frameworks?"
 
@@ -146,7 +164,7 @@ The penny post comparison with A2A is worth noting: A2A standardizes programmati
 
 **The actual difference:** Governance frameworks describe what should happen. NLAs are an attempt at what it looks like when it's actually happening — values as readable source code, decision trails in prose, human authority as a runtime contract rather than a policy requirement.
 
-**Where this challenges NLAs:** Governance frameworks are designed for high-stakes, large-scale, multi-stakeholder systems. Claiming to operationalize governance principles on small projects is a stretch — the hard part of governance is institutional, political, and organizational, not architectural. An NLA's values document is readable, but that doesn't mean it's *governed* in the way the EU AI Act means. The distance between "I can read the values file" and "there's an institutional process for auditing and contesting those values" is enormous.
+**Where this challenges NLAs:** Governance frameworks are designed for high-stakes, large-scale, multi-stakeholder systems. NLAs operationalize governance at the architectural layer — readable values, decision trails, runtime accountability. But the hard part of governance is institutional: process for auditing, contesting, and enforcing values across stakeholders. Small projects can't reach that layer, and the architectural piece by itself isn't what the EU AI Act or OECD principles mean by governance. The distance between "I can read the values file" and "there's an institutional process for auditing and contesting those values" is enormous.
 
 ---
 
@@ -158,7 +176,7 @@ The penny post comparison with A2A is worth noting: A2A standardizes programmati
 
 **The actual difference:** DevOps assumes conventional code as the substrate, with operational processes *around* it. Agent improvement loops optimize the model or workflow directly — better training data, evaluation pipelines, A/B tests. NLAs do something in between: they improve by evolving the application's own prose artifacts — rewriting the skill file, adjusting the values document, updating the voice guide. The improvement target isn't the surrounding operations or the underlying model, but the source code itself.
 
-**Where this challenges NLAs:** Both traditions have something NLAs lack. DevOps has decades of operational experience at scale. Agent improvement loops have measurable outcomes — accuracy scores, eval benchmarks, A/B results. NLA improvement is assessed by human judgment — "does the output feel better?" That's appropriate for judgment-rich tasks but makes it hard to demonstrate improvement rigorously. NLAs borrow the vocabulary of both traditions without having earned it through comparable operational experience. The patterns might not transfer at scale.
+**Where this challenges NLAs:** Both traditions have something NLAs lack. DevOps has decades of operational experience at scale. Agent improvement loops have measurable outcomes — accuracy scores, eval benchmarks, A/B results. NLA improvement is assessed by human judgment — "does the output feel better?" That's appropriate for judgment-rich tasks but makes it hard to demonstrate improvement rigorously. NLAs implement these patterns at one practitioner's scale. What they haven't earned is the operational experience at multi-organization scale that DevOps and agent improvement loops can claim. The patterns might not transfer at scale.
 
 ---
 

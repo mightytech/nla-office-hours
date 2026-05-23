@@ -6,12 +6,13 @@ Essays, white papers, and working code exploring what software looks like when t
 
 ## Entry Points
 
-Start with either main essay. They cover different ground and reference each other.
+Three essays cover different ground for different audiences. They reference each other.
 
 | Essay | Audience | What it argues |
 |-------|----------|---------------|
 | [The Documentation Is the Application](the-documentation-is-the-application.md) | Developers, technologists | Five findings from building software where prose is the source code and the AI is the runtime |
 | [Executable Governance](executable-governance.md) | Governance researchers, policy thinkers | What happens when governance is written in a medium that can actually execute it |
+| [Respect the Intelligence](respect-the-intelligence.md) | Senior operators, strategic AI users | A practical methodology for working with AI on judgment tasks — grounded in forty-plus controlled experiments |
 
 ## Companion Pieces
 
@@ -56,6 +57,8 @@ Maps between essay claims and the artifacts that support them. For readers who w
 | [Probe Report Evidence Guide](probe-report-evidence-guide.md) | [The Documentation Is the Application](the-documentation-is-the-application.md) — maps claims to artifacts by finding, reading path |
 
 ## Reading Paths
+
+**"How do I work with AI better?"** — Start with [Respect the Intelligence](respect-the-intelligence.md). Practical methodology for judgment-rich AI work, grounded in the experimental program behind the rest of the collection.
 
 **"What are NLAs?"** — Start with the probe report. It explains the paradigm through five findings, grounded in things actually built.
 
