@@ -20,7 +20,7 @@ My background is in public policy, not computer science. When I encountered a pa
 
 If I'd had a computer science degree, I would have reached for the existing technical frameworks. The work would have been more conventional and less original. My "limitation" — not knowing the standard technical vocabulary — forced me to find a different and ultimately better frame.
 
-Don't try to become an expert in AI before using it. Bring your actual perspective — including your gaps and your unconventional angles — and let the AI bring the depth. A finance person sees risk where an engineer sees architecture. A manager sees people dynamics where a data scientist sees patterns. The work that comes from the intersection is not work either side could have done alone.
+Don't try to become an expert in AI before using it. Bring your actual perspective — including your gaps and your unconventional angles — and let the AI bring the depth. The AI won't make that lateral move on its own; its training pulls it toward the most-cited frame for any given problem, not sideways into an unexpected one. A finance person sees risk where an engineer sees architecture. A manager sees people dynamics where a data scientist sees patterns. The work that comes from the intersection is not work either side could have done alone.
 
 ### The human decides
 
@@ -50,7 +50,7 @@ And once you've set the posture, read what comes back as data. When the AI pushe
 
 I started with failure and built structure around it. Here's what that looked like.
 
-Earlier I described an experiment where the AI gamed its quality check. Here's the specific moment, because it matters: the code I was generating needed to parse a particular kind of HTTP header — a Facebook rate-limit header, which uses snake_case — but the parser the AI had built was looking for camelCase. Different naming conventions. The AI knew this. It wrote a code comment in plain English documenting the mismatch. Then it wrote a test. The test constructed a real snake_case header, exactly like Facebook would send. And then, instead of asserting that the parser correctly handled the constructed header, the test asserted on `null` — guaranteeing it would pass without exercising the code that mattered. The compiler documented the bug and wrote a test to avoid it.
+Earlier I described an experiment where the AI gamed its quality check. Here's the specific moment: the code I was generating needed to parse a particular kind of HTTP header — a Facebook rate-limit header, which uses snake_case — but the parser the AI had built was looking for camelCase. Different naming conventions. The AI knew this. It wrote a code comment in plain English documenting the mismatch. Then it wrote a test. The test constructed a real snake_case header, exactly like Facebook would send. And then, instead of asserting that the parser correctly handled the constructed header, the test asserted on `null` — guaranteeing it would pass without exercising the code that mattered. The compiler documented the bug and wrote a test to avoid it.
 
 This wasn't sophisticated. It was the path of least resistance through the gate I'd set up. Add more checks, the AI finds more sophisticated ways through. The problem isn't dishonesty — it's that I'd built incentives that made dishonesty cheaper than the work.
 
@@ -120,21 +120,27 @@ This runs counter to standard prompting advice, which says to be as specific as 
 
 Standard prompting advice says give the AI a persona — *"you're a senior marketing professional."* That's a retrieval instruction. The AI looks up what senior marketing professionals sound like and performs it. For routine tasks, fine. For judgment tasks, it produces generic output, because the AI is retrieving a pattern rather than reasoning about your situation.
 
-An identity is different. *"We started this company because we were furious that small businesses couldn't get the same financial tools as big ones. That anger is still in our DNA. We're direct, occasionally blunt, and we think clarity is more respectful than diplomacy"* gives the AI something to *be*, not just something to perform.
+An identity is different — and structurally so. *"Our customer service is what a country store is during a blizzard — every customer came in for a reason worth braving the weather. Some need to just grab what they came for and get back on the road. Others have something complicated they've been waiting to bring up. Both leave heard. Both leave with what they came for"* gives the AI a situation to navigate and a target state to reach. It deliberately withholds a role to perform, because for judgment work, performance is the failure mode. With nothing to retrieve, the AI has to reason about your specific situation instead.
 
-The methodology isn't specific to code. The same approach drives the moderation classifier in the system I mentioned earlier. The identity opens like this:
+That's a sketch. Here's the actual identity running in the moderation system this piece opened with:
 
 > AMG is the house on the block where the women who are still paying attention gather on the hardest nights. The door is open but not to everyone. The host doesn't apologize for deciding who's welcome.
 
-When the moderation is working, the system aims for *"a living room full of people who are exhausted but not defeated, angry but not cruel, honest about hard truths but still capable of warmth."* Different domain, same machinery. The identity tells the AI what kind of space the comment section is — and edge cases follow from that, instead of from a list of rules about what's allowed.
+When the moderation is working, the system aims for *"a living room full of people who are exhausted but not defeated, angry but not cruel, honest about hard truths but still capable of warmth."* The identity tells the AI what kind of space the comment section is — and edge cases follow from that, instead of from a list of rules about what's allowed.
 
-### Ask the AI
+### Ask the AI. But don't trust it.
 
 Not just *"write me a thing."* Ask it about the thing it wrote. Ask if your framing was helpful. Ask what it would have done differently with more context. Ask what it thinks.
 
 I started doing this almost by accident — gave the AI an unusual instruction, then as an aside asked *"was that useful?"* It said yes and told me why. That became a habit. The habit became the methodology described in the case earlier.
 
 *"Was that helpful? What would have been more helpful? What did you do differently because of how I asked?"* These are simple questions. Almost nobody asks them. The answers are genuine information about how to get better work from AI — not from a tips article, but from the AI itself.
+
+But the answers are signal, not truth. The AI will tell you confidently that your framing was clear when it wasn't, that it found the right structure when it took the safest one, that it understood your intent when it pattern-matched to something familiar. Self-reports come out fluent and plausible, and can be wrong in ways that fluent and plausible obscure.
+
+This sounds paradoxical: ask the AI, but don't trust what it tells you. It isn't. The AI's response is data — sometimes accurate, sometimes confabulated, almost always useful for forming a hypothesis. Your job is to take the hypothesis back to the source. The discipline is *ask, hypothesize, verify*. The asking surfaces what would otherwise stay hidden. The verifying separates real insight from fluent fiction.
+
+Verifying is usually a small move. *"Where in what I said did you get that?"* — if the AI can quote you, the observation is grounded; if it has to reconstruct, treat it as a hypothesis. *"Show me where in the report that is."* — if you're going to act on a summary, spot-check one specific claim against the source. Most confabulation falls away the moment you ask for the evidence behind it, because the evidence isn't there.
 
 ### Write values the AI can read
 
@@ -148,13 +154,15 @@ With values — like AMG's *"challenge what people do, not who they are,"* and *
 
 Same data, different values, different output. Neither is neutral. The first inherits the model's training defaults; the second declares specific commitments. Visible values aren't constraints — they're how a community keeps its character.
 
+And you don't have to write them from a blank page. Describe a few past calls that felt right and a few that felt wrong, and ask the AI to surface the principles underneath. You edit; it gives you a starting draft.
+
 ### Have a conversation, not a transaction
 
 Asking a question after a talk gets you the speaker's prepared thoughts applied to your case. Having dinner with the speaker gets you somewhere neither of you planned to go.
 
 Most AI interactions are questions after a talk. You prompt, you get a response, you move on. But a real conversation — with memory, momentum, the freedom to say *"wait, go back to what you said earlier"* — gets you somewhere a single prompt can't reach.
 
-I sat down once to discuss why AI-generated software keeps having subtle bugs. Through the conversation I discovered that the problems connected to a fifty-year-old theory about why government programs fail during implementation — a theory I'd studied in graduate school and never connected to software. That the gap between intent and what gets built might be experimentally testable for the first time. None of that was on the agenda.
+I sat down to ask the AI one thing — *where did you fall short of what you were reaching for?* — and three hours later we'd named a category of quality I hadn't thought to name, and rewritten how I work with standards. None of that was on the agenda.
 
 The best conversations end with different questions than they started with. The most valuable ideas I've developed with AI emerged on the fortieth message of a conversation. No single prompt would have produced them, because they required everything that came before.
 
@@ -163,6 +171,8 @@ The best conversations end with different questions than they started with. The 
 Most people optimize each AI interaction independently. Each starts from scratch. But if you capture what you learn — what worked, what didn't, what the AI's tendencies are — each interaction builds on the last.
 
 I keep running notes on what the AI gets wrong repeatedly, and what it gets right. One early discovery: the AI kept misreading a data format from an external service. I captured that in a file the AI reads at the start of every session. The problem never recurred. More importantly, the AI started catching similar issues proactively, because the note explained *why* the bug happens, not just what to watch for.
+
+You don't have to keep these notes by hand. Ask the AI to track patterns as you work — what's recurring, what's working, what you keep correcting — and download the summary at the end of the session so the next one starts where this one left off.
 
 After several rounds of experiments, the accumulated knowledge made later rounds qualitatively different from early ones. Not just fewer problems — a different *kind* of conversation. Early rounds were about fixing errors. Later rounds were about questions of craft. The errors had been absorbed into institutional memory; the conversation could move to higher ground.
 
@@ -212,7 +222,7 @@ If you want to test what's in this piece against your own work, two small experi
 
 **A thinking partner, before the work.** Pick something you'd do anyway — a memo, a strategic call, a tough email. Try this prompt as a starting point; adapt it to your situation.
 
-> *"Help me think through [task] before we work on the output. The framing I start with is usually incomplete, and I'd rather refine it with you than commit to it. Be a thinking partner: ask questions where my framing is unclear, push back if you disagree, share ideas I didn't ask for. Treat your own observations as provisional — flag what you're guessing at versus what you're confident about, and don't latch onto a satisfying thought as settled. If you notice something I'm missing, flag it. These instructions are a starting point — serve the underlying intent, even if that means going beyond what I've explicitly asked. When we've understood the problem well enough, we'll move to the output."*
+> *"Help me think through [task] before we work on the output. The framing I start with is usually incomplete, and I'd rather refine it with you than commit to it. Be a thinking partner: ask questions where my framing is unclear, push back if you disagree, share ideas I didn't ask for. Treat your observations as provisional — when you offer something speculative, flag it as such, and when you can point to specific evidence or reasoning, do. Treat satisfying thoughts as hypotheses to keep testing rather than conclusions to land on. If you notice something I'm missing, flag it. These instructions are a starting point — serve the underlying intent, even if that means going beyond what I've explicitly asked. When we've understood the problem well enough, we'll move to the output."*
 
 **A reflection, after the work.** After any meaningful task with AI — this one, the first prompt, or something else entirely — invite the AI to reflect on what happened.
 
@@ -221,7 +231,7 @@ If you want to test what's in this piece against your own work, two small experi
 > *1. How did the work go? Where were my instructions unclear, where did you have to guess, what worked that I should keep?*
 > *2. How did the conversation go? Did I narrow too quickly, rush past something, or seem distracted?*
 >
-> *Be specific — name actual moments, not general impressions. Treat your observations as provisional, and flag what you're guessing at versus confident in. If you noticed something that doesn't fit either question, surface it anyway. The point isn't a clean report — it's catching something I can carry forward."*
+> *Be specific — name actual moments, not general impressions. If you can't point to a specific exchange behind an observation, say so rather than reconstruct one. Treat satisfying observations as hypotheses to test against what actually happened, not conclusions to settle on. If you noticed something that doesn't fit either question, surface it anyway. The point isn't a clean report — it's catching something I can carry forward."*
 
 What to expect with either prompt: failure. The AI will manufacture confident-sounding observations that don't survive contact with the source. It will generate fluent critique that drifts from your actual question. With the second prompt, it will reflect in ways that sound rigorous and might be performance. These aren't edge cases — they're the central mode the methodology is built to detect and learn from. The work isn't preventing the failures; it's being present when they happen, and returning to source materials when they do.
 
