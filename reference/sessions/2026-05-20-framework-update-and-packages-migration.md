@@ -90,25 +90,41 @@ Phase 2 (execute) landed:
 
 ## Debrief
 
-(Pending — captured at session close via `/close`.)
+Four observations distilled at `/close` (2026-05-22):
+
+1. **Subagent-delegated validates were load-bearing.** Three validate sweeps across the session (structural after packages, coherence + standards in parallel, structural after examples). Each surfaced real findings — system-status drift, the dead penny-post branch in `app/explore.md`, the CLAUDE.md Environment gap — without consuming main context. Worth reaching for reflexively on any session with non-trivial prose changes. *Process pattern only; not actionable as a doc change.*
+
+2. **Documentation drift escaped the initial sed sweep — twice.** Sed cleanly handled the uniform structural prose in 16 `.claude/skills/*` wrappers, but narrative references in `app/explore.md`, `app/shared/common-patterns.md`, and CLAUDE.md's Environment table slipped through both the packages migration and the examples catalog. Pattern: regex matches uniform prose; heterogeneous narrative prose hides the path in surrounding context. Reflexive lesson: `grep -r` over operative content before committing, not after. *Escalated to framework as [nla-framework#28](https://github.com/mightytech/nla-framework/issues/28) (combined with item 1 below).*
+
+3. **The "default to prose" principle paid off immediately in practice.** Multiple "yes, but" / "yes, and" pushbacks from the maintainer reshaped the design in concrete ways: examples-as-source-material vs examples-as-packages, dropping the export-ignore decision, distinguishing end-user vs maintainer update flow, recognizing that penny-post is already a package. AskUserQuestion would have flattened each into a binary that lost the actual decision shape. The framework's 2026-05-11 principle just got empirical validation. *Friction-log candidate (Positive severity) — left for `/friction-log` invocation next session per `/close`'s discipline.*
+
+4. **"Where Things Live" record surfaced `lib/` as drift.** Writing the section forced an explicit answer to "what is `lib/` for here?" — and the answer was "nothing currently." Pre-existing drift made visible by adopting the framework's structure-decisions protocol. The protocol is diagnostic, not just record-keeping. After consideration, `lib/` is being kept as a reserved slot — possibly the natural location for a future `update-app` script the framework letter (nla-framework#28) proposes. *Friction-log candidate (Positive severity) — paired with observation 3 for invocation next session.*
+
+Two observations escalated to the framework as letter [nla-framework#28](https://github.com/mightytech/nla-framework/issues/28): the post-bulk-edit verification gap (item 2) and the original 2026-05-22 friction entry about end-user update affordance (`bin/update-app`). Per the framework's 2026-05-11 thin-wrapper-pattern-for-scripts suggestion (added to the letter during drafting), one shape the framework could consider is shipping `update-app` at `packages/nla-framework/lib/update-app` — that's why `lib/` was kept as a reserved slot rather than removed.
 
 ## State at Close
 
-**What's working:**
-- Framework + penny-post as packages submodules, pinned to v0.0.9 / v0.0.1.
-- Three example NLAs as `examples/` submodules: copydesk, duet, nla-claude-code.
-- "Where Things Live" structure record in `app/overview.md` captures all top-level path decisions with attribution.
-- Operative content references the new paths consistently: explore.md sources, overview.md hierarchy + diagram, README directory tree + end-user upgrade docs.
-- `reference/example-nlas.md` tracks examples separately from `installed-packages.md`.
-- system-status.md current (will need one more refresh for the 2026-05-22 examples work, pending at `/close`).
+**What shipped:**
+- Framework + penny-post adopted as `packages/` submodules pinned to v0.0.9 / v0.0.1.
+- Three example NLAs at `examples/` (copydesk, duet, nla-claude-code) — new source-material tier for the explore task.
+- "Where Things Live" structure record landed in `app/overview.md`.
+- Operative content (CLAUDE.md, app/explore.md, app/overview.md, app/shared/common-patterns.md, README.md) coherent across all references to the new structure.
+- `reference/example-nlas.md` tracks examples; `reference/installed-packages.md` updated with both packages migration entries.
+- system-status.md current (last updated 2026-05-22).
+- Letter sent to framework as [nla-framework#28](https://github.com/mightytech/nla-framework/issues/28).
+- Feedback entry for 2026-03-30 permission test marked resolved and archived. Loop closed on [nla-office-hours#1](https://github.com/mightytech/nla-office-hours/issues/1) with a follow-up comment.
 
 **What's pending:**
-- Final commit for Step 3 (this Phase 2 of the examples work).
-- One more `/validate` structural pass (the previous pass was before examples landed).
-- system-status.md update reflecting the 2026-05-22 examples work.
-- Push to origin (with annotated tag) at `/close`.
-- Mark feedback log entry for 2026-03-30 permission test as resolved.
-- 2026-03-05 architecture-review friction log entry remains open.
-- Framework-letter material accumulated: the bash-script idea + the 2026-03-05 architecture-review observation. Could be one letter or two.
+- Two open friction log entries: 2026-03-05 (architecture review applies traditional software thinking) — framework-letter candidate still; 2026-05-20 (app/explore.md and app/overview.md don't restate "NLA documents are source code") — deferred to a future maintenance session as enrichment work.
+- 2026-05-22 friction entry (end-user update affordance) is escalated upstream as part of nla-framework#28 — awaiting framework response.
+- Observations 3 and 4 from this session's debrief are friction-log candidates (positive severity) but not yet formally logged — `/close` discipline says `/friction-log` is the right surface, not `/close`. Worth logging next session if the positive-reinforcement signal is useful to keep visible.
 
-**Where to pick up:** Two open friction entries are now framework-letter candidates. The structurally resolved permission line means this NLA isn't waiting on infrastructure improvements anymore — open work is enrichment (the example-NLAs source/principle-anchoring work in `app/`) rather than blockers.
+**Decisions made but not yet implemented:** None — everything decided in this session shipped.
+
+**Context for next time:**
+- This NLA is no longer waiting on framework infrastructure. The permission-friction line that ran from 2026-03-05 → packages migration → 2026-05-20 adoption is fully closed.
+- Open work is enrichment (the principle-anchoring in app/explore.md and app/overview.md, possibly the lib/`update-app` question if the framework lands a proposal on nla-framework#28).
+- The "Where Things Live" record is the new structural memory — consult it before adding any new directory or top-level file.
+- Two letters now in flight at the framework: nla-framework#15 (permission test, March) and nla-framework#28 (end-user update + bulk-edit verification, today). Track responses on /check-feedback or via the framework's own activity.
+
+**Where to pick up:** Either process the 2026-03-05 architecture-review friction entry (oldest open item, framework-letter candidate), or do the principle-anchoring work in app/explore.md and app/overview.md. Both are enrichment, not blockers. Or move to other work entirely — this NLA is in a clean state.

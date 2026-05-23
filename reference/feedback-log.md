@@ -29,10 +29,4 @@ Not all fields are required.
 
 ## Entries
 
-### 2026-03-30: Permission behavior test — symlinks vs. direct sibling reads
-
-- **Source:** [mightytech/nla-office-hours#1](https://github.com/mightytech/nla-office-hours/issues/1)
-- **Verdict:** Accept
-- **Status:** Pending
-- **What to do:** Run the test protocol (check settings, test direct reads, test symlink reads, clean up) and report results back to the framework via `/write-letter`.
-- **Why it was accepted:** Low-effort test that contributes to framework infrastructure benefiting all NLAs. Directly relevant — this project experiences the permission friction being investigated.
+*No pending entries.*
