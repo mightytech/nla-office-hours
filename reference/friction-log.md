@@ -37,6 +37,30 @@ Not all fields are required. Use what's relevant.
 
 ## Entries
 
+### 2026-05-22: "Default to prose for design conversations" principle (framework 2026-05-11) paid off immediately
+
+- **Type:** Process
+- **Severity:** Positive
+- **Task:** Maintenance
+- **Status:** Open (positive observation — kept as data point, not actionable)
+- **Observation:** This session installed the framework's 2026-05-11 "default to prose for design conversations" principle as part of the intent-update batch. Within the same session, the principle was tested in practice: multiple "yes, but" / "yes, and" pushbacks from the maintainer reshaped the design in concrete ways that AskUserQuestion would have flattened into binaries. Examples: examples-as-source-material vs examples-as-packages (recognized that they're semantically different); dropping the export-ignore decision after maintainer noted repos aren't heavy AND export needs the content; distinguishing end-user `git pull` flow from maintainer `/update` workflow; recognizing that penny-post is already a package (so doesn't belong under examples). Each was a layered decision where the actual answer was "yes, but" — prose surfaced it; an enum would have either picked an option that lost the nuance or required several rounds to land.
+- **Generalizable:** Empirical reinforcement of the framework principle. Not actionable as a doc change — the principle already lives in `core/nla-foundations.md` and `install/CLAUDE-intent.md`. Value of this entry: positive data point that the principle pays off in real practice, not just theory.
+- **Affected documentation:** None.
+- **Proposed fix:** None.
+- **Notes:** Captured during `/close` debrief (2026-05-22). One of two positive observations from the session about recent framework additions paying off (see also the structure-decisions protocol entry below).
+
+### 2026-05-22: "Where Things Live" record (framework 2026-05-07 structure-decisions protocol) functions as a diagnostic, not just a record
+
+- **Type:** Process
+- **Severity:** Positive
+- **Task:** Maintenance
+- **Status:** Open (positive observation — kept as data point, not actionable)
+- **Observation:** This session adopted the framework's 2026-05-07 structure-decisions protocol by creating a "Where Things Live" section in `app/overview.md`. The framework's documentation frames the protocol as a record-keeping discipline ("propose → review → record → act"). In practice, writing the section had a diagnostic side effect: forcing an explicit answer to "what is `lib/` for here?" surfaced that `lib/` existed empty and unused. Pre-existing drift made visible by adopting the protocol. The protocol is not just record-keeping — it asks "is every path attributable?" and the answer for `lib/` was "no current purpose, framework default never used here." Worth knowing that the protocol catches latent structural drift, not only new structural changes.
+- **Generalizable:** Yes — any NLA adopting the protocol for the first time should expect to surface at least some latent structural drift (directories or top-level files that exist but have no current purpose). Worth framing this as an expected benefit when the framework documents the protocol.
+- **Affected documentation:** Possibly the framework's structure-decisions writeup (`packages/nla-framework/core/nla-foundations.md` Working Rhythms section, or wherever the protocol is documented), could add a note about the diagnostic benefit. Soft suggestion — not letter-worthy on its own.
+- **Proposed fix:** None for this NLA. Soft suggestion for the framework if the pattern recurs.
+- **Notes:** Captured during `/close` debrief (2026-05-22). Paired observation with the prose-default principle entry above — both are positive notes about recent framework additions (May 2026) paying off in real practice. `lib/` itself is being kept as a reserved slot pending the framework's response to nla-framework#28, which may land `update-app` there.
+
 ### 2026-05-22: End-user update flow is git-native — worth a small wrapper, possibly framework-level
 
 - **Type:** Process / Documentation
